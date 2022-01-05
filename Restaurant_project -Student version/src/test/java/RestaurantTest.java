@@ -69,4 +69,10 @@ class RestaurantTest {
         itemList = restaurant.getMenu();
         assertEquals(388, restaurant.orderValue(itemList));
     }
+
+    @Test
+    public void when_no_items_were_selected_in_menu_total_order_value_should_be_zero(){
+        double total = restaurant.orderValue(itemList);
+        assertEquals(0, total);
+    }
 }
