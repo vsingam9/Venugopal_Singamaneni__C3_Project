@@ -3,11 +3,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RestaurantTest {
     Restaurant restaurant;
+    List<Item> itemList = new ArrayList<Item>();
     //REFACTOR ALL THE REPEATED LINES OF CODE
     int initialMenuSize;
     @BeforeEach
@@ -58,4 +62,11 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //  using TDD
+    @Test
+    public void when_selecting_items_in_menu_total_order_value_should_be_returned(){
+        itemList = restaurant.getMenu();
+        assertEquals(388, restaurant.orderValue(itemList));
+    }
 }
